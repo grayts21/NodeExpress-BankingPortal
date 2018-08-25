@@ -21,14 +21,14 @@ describe('Move services routes', () => {
     assert(router.stack.length === 4, 'Were all four routes moved to `services.js`?');
 
     const getRoutes = [];
-    router.stack.forEach(routes => {
+    router.stack.forEach((routes) => {
       if (routes.route.methods.get) {
         getRoutes.push(routes.route.path);
       }
     });
 
     const postRoutes = [];
-    router.stack.forEach(routes => {
+    router.stack.forEach((routes) => {
       if (routes.route.methods.get) {
         postRoutes.push(routes.route.path);
       }

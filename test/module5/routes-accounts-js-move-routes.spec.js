@@ -21,7 +21,7 @@ describe('Move account routes', () => {
     assert(router.stack.length === 3, 'Were all three routes moved to `accounts.js` and added to the router?');
 
     const getRoutes = [];
-    router.stack.forEach(routes => {
+    router.stack.forEach((routes) => {
       if (routes.route.methods.get) {
         getRoutes.push(routes.route.path);
       }

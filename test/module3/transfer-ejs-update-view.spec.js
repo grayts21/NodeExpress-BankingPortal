@@ -18,7 +18,7 @@ describe('Update `transfer` view', () => {
         'The form is missing a `method` attribute.'
       );
     } catch (err) {
-      assert(err.message.indexOf('compiling ejs') < -1, `Error compiling transfer.ejs`);
+      assert(err.message.indexOf('compiling ejs') < -1, 'Error compiling transfer.ejs');
     }
     assert(
       $('#transferForm').attr('action') === '/services/transfer' || $('#transferForm').attr('action') === '/transfer',

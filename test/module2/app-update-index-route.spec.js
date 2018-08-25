@@ -12,7 +12,7 @@ describe('Updated Index Route', () => {
     }
   });
 
-  it('should contain the index route with accounts @app-update-index-route', done => {
+  it('should contain the index route with accounts @app-update-index-route', (done) => {
     assert(typeof app === 'function', '`app` const has not been created in `app.js`.');
     request(app)
       .get('/')

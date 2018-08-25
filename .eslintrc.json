@@ -7,7 +7,6 @@
 
     ],
     "rules": {
-        "indent": 2,
         "no-console":"off",
         "comma-dangle": "off",
         "object-shorthand": "off",

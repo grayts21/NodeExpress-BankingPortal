@@ -34,17 +34,37 @@ app.get('/profile', (req, res) => {
 });
 
 app.get('/transfer', (req, res) => {
-  res.render('transfer', {
-    from: 'checking',
-    to: 'savings'
-  });
+  res.render('transfer');
 });
 
 app.post('/transfer', (req, res) => {
-  accounts[req.body.from].balance = accounts[req.body.from].balance - parseInt(req.body.amount);
-  accounts[req.body.to].balance = accounts[req.body.to].balance + parseInt(req.body.amount);
+  accounts[req.body.from].balance = parseInt(accounts[req.body.from].balance)
+    - parseInt(req.body.amount);
+  accounts[req.body.from].available = parseInt(accounts[req.body.from].available)
+    + parseInt(req.body.amount);
+  accounts[req.body.to].balance = parseInt(accounts[req.body.to].balance)
+    + parseInt(req.body.amount);
   const accountsJSON = JSON.stringify(accounts, null, 4);
   fs.writeFileSync(path.join(__dirname, 'json/accounts.json'), accountsJSON, { encoding: 'utf8' });
+  res.render('transfer', { message: 'Transfer Completed' });
 });
 
+app.get('/payment', (req, res) => {
+  res.render('payment', {
+    account: accounts.credit
+  });
+});
+
+app.post('/payment', (req, res) => {
+  accounts.credit.balance = parseInt(accounts.credit.balance)
+    - parseInt(req.body.amount);
+  accounts.checking.balance = parseInt(accounts.checking.balance)
+    - parseInt(req.body.amount);
+  const accountsJSON = JSON.stringify(accounts, null, 4);
+  fs.writeFileSync(path.join(__dirname, 'json/accounts.json'), accountsJSON, { encoding: 'utf8' });
+  res.render('payment', {
+    account: accounts.credit,
+    message: 'Payment Completed'
+  });
+});
 app.listen(3000, () => console.log('PS Project running on port 3000'));

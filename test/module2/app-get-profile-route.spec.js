@@ -12,7 +12,7 @@ describe('app.js contains a Profile Route', () => {
     }
   });
 
-  it('should contain the profile route @app-get-profile-route', done => {
+  it('should contain the profile route @app-get-profile-route', (done) => {
     assert(typeof app === 'function', '`app` const has not been created in `app.js`.');
     request(app)
       .get('/profile')
