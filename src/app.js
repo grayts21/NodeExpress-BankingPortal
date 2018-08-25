@@ -40,8 +40,6 @@ app.get('/transfer', (req, res) => {
 app.post('/transfer', (req, res) => {
   accounts[req.body.from].balance = parseInt(accounts[req.body.from].balance)
     - parseInt(req.body.amount);
-  accounts[req.body.from].available = parseInt(accounts[req.body.from].available)
-    + parseInt(req.body.amount);
   accounts[req.body.to].balance = parseInt(accounts[req.body.to].balance)
     + parseInt(req.body.amount);
   const accountsJSON = JSON.stringify(accounts, null, 4);
@@ -58,6 +56,8 @@ app.get('/payment', (req, res) => {
 app.post('/payment', (req, res) => {
   accounts.credit.balance = parseInt(accounts.credit.balance)
     - parseInt(req.body.amount);
+  accounts.credit.available = parseInt(accounts.credit.available)
+    + parseInt(req.body.amount);
   accounts.checking.balance = parseInt(accounts.checking.balance)
     - parseInt(req.body.amount);
   const accountsJSON = JSON.stringify(accounts, null, 4);
