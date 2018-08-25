@@ -1,0 +1,20 @@
+{
+    "extends": "airbnb-base",
+    "plugins": [
+        "eslint-plugin-html",
+        "eslint-plugin-json",
+        "eslint-plugin-import"
+
+    ],
+    "rules": {
+        "indent": 2,
+        "no-console":"off",
+        "comma-dangle": "off",
+        "object-shorthand": "off",
+        "linebreak-style": "off",
+        "prefer-destructuring": "off",
+        "radix": "off",
+        "no-useless-return": "off",
+        "operator-assignment": "off"
+    }
+}
