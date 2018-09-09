@@ -1,5 +1,3 @@
-// const { express } = require('./accounts')
-
 const express = require('express');
 
 const router = express.Router();
